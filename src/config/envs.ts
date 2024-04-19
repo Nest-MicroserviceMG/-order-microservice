@@ -4,14 +4,12 @@ import * as joi from 'joi';
 //para ver como seran las variables de entorno
 interface EnvVars {
   PORT: number;
-  DATABASE_URL: string;
 }
 
 //defino el esquema de las variables de entorno para validarlas
 const envsSchema = joi
   .object({
     PORT: joi.number().required(), //valida que sea un numero
-    DATABASE_URL: joi.string().required(), //valida que sea un string
   })
   .unknown(true); //acepta otras variables que no esten definidas
 
@@ -29,5 +27,4 @@ const envVars: EnvVars = value;
 //exporto las variables de entorno
 export const envs = {
   port: envVars.PORT,
-  databaseUrl: envVars.DATABASE_URL,
 };
